@@ -1,23 +1,29 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+  <v-app>
+    <Menu />
+    <v-main>
+      <!-- <HelloWorld /> -->
+    </v-main>
+    <Footer />
+  </v-app>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
-</script>
+// import HelloWorld from "./components/HelloWorld";
+import Footer from "./components/Footer";
+import Menu from "./components/Menu";
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+export default {
+  name: "App",
+
+  components: {
+    // HelloWorld,
+    Footer,
+    Menu
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
