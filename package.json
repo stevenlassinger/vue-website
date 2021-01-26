@@ -5,14 +5,21 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+<<<<<<< HEAD
     "lint": "vue-cli-service lint",
     "deploy": "node gh-pages-deploy.js"
+=======
+    "lint": "vue-cli-service lint"
+>>>>>>> Initial dist subtree commit
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+<<<<<<< HEAD
     "emailjs-com": "^2.6.4",
+=======
+>>>>>>> Initial dist subtree commit
     "vue": "^2.6.12",
     "vue-scrollto": "^2.20.0",
     "vuetify": "^2.3.18"
@@ -30,8 +37,12 @@
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-template-compiler": "^2.6.11",
+<<<<<<< HEAD
     "vuetify-loader": "^1.3.0",
     "execa": "latest"
+=======
+    "vuetify-loader": "^1.3.0"
+>>>>>>> Initial dist subtree commit
   },
   "eslintConfig": {
     "root": true,
