@@ -1,6 +1,13 @@
 <template>
   <v-app v-on:scroll.passive="onScroll">
-    <v-app-bar inverted-scroll ref="appbar" color="var(--primaryColor)" dark short app>
+    <v-app-bar
+      inverted-scroll
+      ref="appbar"
+      color="var(--primaryColor)"
+      dark
+      short
+      app
+    >
       <div class="name-title font-weight-thin">Steve</div>
       <v-spacer></v-spacer>
 
@@ -15,7 +22,10 @@
     </v-app-bar>
     <header class="landing-page">
       <div align="center" class="lp-actions">
-        <div class="welcome font-weight-light">Hello, I'm <font style="color:var(--primaryColor)">Steve</font>. Welcome to my site!</div>
+        <div class="welcome font-weight-light">
+          Hello, I'm <font style="color: var(--primaryColor)">Steve</font>.
+          Welcome to my site!
+        </div>
 
         <v-btn
           v-on:click="explore()"
@@ -38,7 +48,10 @@
             <v-card
               shadow
               max-width="374"
-              style="background: var(--primaryColor); color:  var(--primaryTextColor)"
+              style="
+                background: var(--primaryColor);
+                color: var(--primaryTextColor);
+              "
               v-show="show"
             >
               <template slot="progress">
@@ -58,6 +71,10 @@
                   FULL-STACK WEB DEVELOPER
                 </div>
               </v-card-title>
+              <v-divider
+                class="mx-4"
+                style="background: var(--primaryTextColor)"
+              ></v-divider>
 
               <v-card-text class="pl-1">
                 <v-row align="center" class="mx-0">
@@ -170,8 +187,6 @@ export default {
 </script>
 
 <style scoped>
-
- 
 .name-title {
   caret-color: transparent;
   font-size: 2rem;
@@ -193,7 +208,7 @@ export default {
 .welcome {
   color: var(--primaryTextColor);
   font-size: 3em;
-  margin-bottom:3em;
+  margin-bottom: 3em;
 }
 
 .explore-btn {
@@ -214,7 +229,7 @@ export default {
 }
 
 .info-value {
-  color:var(--primaryTextColor) !important;
+  color: var(--primaryTextColor) !important;
 }
 
 /* FROM LEFT ------> */
