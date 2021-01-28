@@ -11,6 +11,14 @@
       <div class="name-title font-weight-thin">Steve</div>
       <v-spacer></v-spacer>
 
+      <v-btn text v-scroll-to="'.intro-section'" class="px-2">
+        <div class="font-weight-light">About Me</div>
+        <v-icon class="pl-1">mdi-account</v-icon>
+      </v-btn>
+      <v-btn text v-scroll-to="'.skills-section'" class="px-2">
+        <div class="font-weight-light">Skills</div>
+        <v-icon class="pl-1">mdi-code-tags</v-icon>
+      </v-btn>
       <v-btn text class="px-2">
         <div class="font-weight-light">Resume</div>
         <v-icon class="pl-1">mdi-file-document</v-icon>
@@ -61,7 +69,7 @@
                   indeterminate
                 ></v-progress-linear>
               </template>
-              <v-img class="" height="26vh" src="./assets/avatar.jpg"></v-img>
+              <v-img class="" height="28vh" src="./assets/avatar.jpg"></v-img>
               <v-card-title>
                 <div style="display: inline">Steve Lassinger</div>
                 <div
@@ -132,18 +140,83 @@
       </div>
     </section>
     <section class="skills-section">
-      <div class="text-center text-h1 mt-4">Skills</div>
+      <div class="container skills-body">
+        <div class="text-center text-h1 mt-4">Skills</div>
+        <v-row>
+          <v-col cols="4">
+            <v-card
+              shadow
+              max-width="374"
+              style="background: white; color: black"
+              v-show="show"
+            >
+              <v-card-title class="justify-center skills-card-header"
+                >Languages
+              </v-card-title>
+              <v-card-text class="mt-3">
+                <Skills :icon="icons.get('html')"></Skills>
+                <Skills :icon="icons.get('vue')"></Skills>
+                <Skills :icon="icons.get('css')"></Skills>
+                <Skills :icon="icons.get('js')"></Skills>
+                <Skills :icon="icons.get('java')"></Skills>
+                <Skills :icon="icons.get('jquery')"></Skills>
+                <Skills :icon="icons.get('linux')"></Skills>
+                <Skills :icon="icons.get('mysql')"></Skills>
+                <Skills :icon="icons.get('node')"></Skills>
+                <Skills :icon="icons.get('webpack')"></Skills>
+                
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col cols="4">
+            <v-card
+              shadow
+              max-width="374"
+              style="background: white; color: black"
+              v-show="show"
+            >
+                 <v-card-title class="justify-center skills-card-header"
+                >development
+              </v-card-title>
+              <v-card-text>
+
+               <UglySVGs :value="'jira'"></UglySVGs>
+              </v-card-text>
+            </v-card>
+          </v-col>
+
+          <v-col cols="4">
+            <v-card
+              shadow
+              max-width="374"
+              style="
+                background: var(--primaryColor);
+                color: var(--primaryTextColor);
+              "
+              v-show="show"
+            >
+              <v-card-text>
+                <div>Word of the Day</div>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </div>
     </section>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld";
-// import mainView from "./components/views/main";
+import Skills from "./components/skill.vue";
+import UglySVGs from "./components/uglySVGs.vue";
 
+import Icons from "./icons.js";
 export default {
   name: "App",
-
+  components: {
+    Skills: Skills,
+    UglySVGs: UglySVGs
+  },
   data: () => ({
     show: false,
     scrolled: false,
@@ -152,9 +225,12 @@ export default {
       fontSize: "30px",
       color: "red",
     },
+    icons: null,
   }),
 
   mounted() {
+    console.log("getIcons:%o", Icons.getIcons());
+    this.icons = Icons.getIcons();
     setTimeout(function () {
       var top = document.getElementById("app").offsetTop;
       window.scrollTo(0, top);
@@ -224,13 +300,23 @@ export default {
   background: #f5f5f5;
 }
 
-.is-body {
+.skills-card-header {
+  background: var(--primaryColor);
+  color: var(--primaryTextColor);
+}
+.is-body,
+.skills-body {
   margin-top: 5em;
 }
 
 .info-value {
   color: var(--primaryTextColor) !important;
 }
+.icon{
+  height: 2em;
+
+}
+ 
 
 /* FROM LEFT ------> */
 .slide-from-left-leave-active,
