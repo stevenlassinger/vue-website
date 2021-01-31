@@ -3,7 +3,7 @@
     <v-col cols="1" class="py-1">
       <svg class="icon" viewBox="0 0 128 128">
         <path
-          v-for="path in icon_data.paths"
+          v-for="path in icon.paths"
           :key="path.d"
           :d="path.d"
           :fill="path.fill"
@@ -15,36 +15,36 @@
       class="pl-3 pt-2 font-weight-bold font-italic"
       style="color: black; display: inline-flex"
     >
-      {{ icon_data.value }}
+      {{ icon.value }}
     </v-col>
-    <v-col v-if="icon_data.level == 1" cols="4" class="pt-2">
+    <v-col v-if="icon.level == 1" cols="4" class="pt-2">
       <div class="rectangle proficient ml-2 mr-1"></div>
       <div class="rectangle proficient mr-1"></div>
       <div class="rectangle proficient mr-1"></div>
     </v-col>
-    <v-col v-else-if="icon_data.level == 2" cols="4" class="pt-2">
+    <v-col v-else-if="icon.level == 2" cols="4" class="pt-2">
       <div class="rectangle intermediate ml-2 mr-1"></div>
       <div class="rectangle intermediate mr-1"></div>
       <div class="rectangle mr-1"></div>
     </v-col>
-    <v-col v-else-if="icon_data.level == 3" cols="4" class="pt-2">
+    <v-col v-else-if="icon.level == 3" cols="4" class="pt-2">
       <div class="rectangle novice ml-2 mr-1"></div>
       <div class="rectangle mr-1"></div>
       <div class="rectangle mr-1"></div>
     </v-col>
 
-    <v-col v-if="icon_data.level == 1" cols="4" class="font-weight-bold pt-2">
+    <v-col v-if="icon.level == 1" cols="4" class="font-weight-bold pt-2">
       proficient
     </v-col>
     <v-col
-      v-else-if="icon_data.level == 2"
+      v-else-if="icon.level == 2"
       cols="4"
       class="font-weight-bold pt-2"
     >
       intermediate
     </v-col>
     <v-col
-      v-else-if="icon_data.level == 3"
+      v-else-if="icon.level == 3"
       cols="4"
       class="font-weight-bold pt-2"
     >
@@ -56,15 +56,7 @@
 <script>
 export default {
   name: "Skills",
-
-  data: () => ({
-    icon_data: null,
-  }),
-
-  mounted() {
-    this.icon_data = this.icon;
-    console.log("icon:%o", this.icon_data);
-  },
+  
   props: {
     icon: {
       type: Object,

@@ -19,13 +19,13 @@
         <div class="font-weight-light">Skills</div>
         <v-icon class="pl-1">mdi-code-tags</v-icon>
       </v-btn>
+      <v-btn text class="px-2" v-scroll-to="'.contact-section'">
+        <div class="font-weight-light">Contact</div>
+        <v-icon class="pl-1">mdi-email</v-icon>
+      </v-btn>
       <v-btn text class="px-2">
         <div class="font-weight-light">Resume</div>
         <v-icon class="pl-1">mdi-file-document</v-icon>
-      </v-btn>
-      <v-btn text class="px-2">
-        <div class="font-weight-light">Contact</div>
-        <v-icon class="pl-1">mdi-email</v-icon>
       </v-btn>
     </v-app-bar>
     <header class="landing-page">
@@ -34,10 +34,9 @@
           Hello, I'm <font style="color: var(--primaryColor)">Steve</font>.
           Welcome to my site!
         </div>
-
         <v-btn
           v-on:click="explore()"
-          class="explore-btn"
+          class="explore-btn elevation-24"
           v-scroll-to="'.intro-section'"
           large
           align="center"
@@ -49,7 +48,7 @@
     <section class="intro-section">
       <div class="container is-body">
         <transition name="slide-from-top">
-          <div class="text-center text-h1 mb-8" v-show="show">About Me</div>
+          <div class="text-center text-h2 mb-8" v-show="show">About Me</div>
         </transition>
         <v-row>
           <transition name="slide-from-left">
@@ -69,7 +68,12 @@
                   indeterminate
                 ></v-progress-linear>
               </template>
-              <v-img class="" height="28vh" src="./assets/avatar.jpg"></v-img>
+              <v-img
+                class=""
+                position="center center"
+                height="28vh"
+                src="./assets/avatar2.jpg"
+              ></v-img>
               <v-card-title>
                 <div style="display: inline">Steve Lassinger</div>
                 <div
@@ -141,9 +145,9 @@
     </section>
     <section class="skills-section">
       <div class="container skills-body">
-        <div class="text-center text-h1 mt-4">Skills</div>
-        <v-row>
-          <v-col cols="4">
+        <div class="text-center text-h2 mb-2">Skills</div>
+        <v-row align="stretch">
+          <v-col cols="4" class="offset-md-2">
             <v-card
               shadow
               max-width="374"
@@ -151,57 +155,106 @@
               v-show="show"
             >
               <v-card-title class="justify-center skills-card-header"
-                >Languages
+                >Languages & Frameworks
               </v-card-title>
+
               <v-card-text class="mt-3">
-                <Skills :icon="icons.get('html')"></Skills>
-                <Skills :icon="icons.get('vue')"></Skills>
-                <Skills :icon="icons.get('css')"></Skills>
-                <Skills :icon="icons.get('js')"></Skills>
-                <Skills :icon="icons.get('java')"></Skills>
-                <Skills :icon="icons.get('jquery')"></Skills>
-                <Skills :icon="icons.get('linux')"></Skills>
-                <Skills :icon="icons.get('mysql')"></Skills>
                 <Skills :icon="icons.get('node')"></Skills>
-                <Skills :icon="icons.get('webpack')"></Skills>
-                
+                <Skills :icon="icons.get('js')"></Skills>
+                <Skills :icon="icons.get('html')"></Skills>
+                <Skills :icon="icons.get('css')"></Skills>
+                <Skills :icon="icons.get('jquery')"></Skills>
+                <Skills :icon="icons.get('bootstrap')"></Skills>
+                <Skills :icon="icons.get('vue')"></Skills>
+                <Skills :icon="icons.get('materialui')"></Skills>
+                <Skills :icon="icons.get('java')"></Skills>
+                <Skills :icon="icons.get('mysql')"></Skills>
+                <Skills :icon="icons.get('c')"></Skills>
+                <UglySVGs :value="'python'"></UglySVGs>
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="4">
+          <v-col cols="4" class="">
             <v-card
               shadow
               max-width="374"
               style="background: white; color: black"
               v-show="show"
+              height="100%"
             >
-                 <v-card-title class="justify-center skills-card-header"
-                >development
+              <v-card-title class="justify-center skills-card-header"
+                >Development
               </v-card-title>
               <v-card-text>
-
-               <UglySVGs :value="'jira'"></UglySVGs>
-              </v-card-text>
-            </v-card>
-          </v-col>
-
-          <v-col cols="4">
-            <v-card
-              shadow
-              max-width="374"
-              style="
-                background: var(--primaryColor);
-                color: var(--primaryTextColor);
-              "
-              v-show="show"
-            >
-              <v-card-text>
-                <div>Word of the Day</div>
+                <UglySVGs :value="'docker'"></UglySVGs>
+                <Skills :icon="icons.get('git')"></Skills>
+                <Skills :icon="icons.get('vscode')"></Skills>
+                <Skills :icon="icons.get('linux')"></Skills>
+                <UglySVGs :value="'jira'"></UglySVGs>
+                <Skills :icon="icons.get('nginx')"></Skills>
+                <Skills :icon="icons.get('webpack')"></Skills>
               </v-card-text>
             </v-card>
           </v-col>
         </v-row>
       </div>
+    </section>
+    <section class="contact-section">
+      <div class="container contact-body">
+        <div class="text-center text-h2 mb-5 contact-header">Contact Me</div>
+        <div class="container1">
+          <form class="contact-form" @submit.prevent="sendEmail">
+            <label>Name</label>
+            <input
+              type="text"
+              v-model="name"
+              name="name"
+              placeholder="Your Name"
+            />
+            <label>Email</label>
+            <input
+              type="email"
+              v-model="email"
+              name="email"
+              placeholder="Your Email"
+            />
+            <label>Message</label>
+            <textarea
+              name="message"
+              v-model="message"
+              cols="30"
+              rows="5"
+              placeholder="Message"
+            >
+            </textarea>
+            <input type="submit" value="Send" />
+          </form>
+        </div>
+      </div>
+      <v-footer
+        color="primary lighten-1"
+        padless
+        class="custom-footer"
+        v-show="footerShow"
+      >
+        <v-row justify="center" no-gutters>
+          <v-col
+            class="footer-col lighten-2 py-4 text-center white--text"
+            cols="12"
+          >
+            <v-btn
+              v-for="icon in footerIcons"
+              :key="icon"
+              class="mx-4 white--text"
+              icon
+              :href="icon.link"
+              target="_blank"
+            >
+              <v-icon size="24px"> {{ icon.value }} </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-footer>
     </section>
   </v-app>
 </template>
@@ -209,23 +262,41 @@
 <script>
 import Skills from "./components/skill.vue";
 import UglySVGs from "./components/uglySVGs.vue";
+import emailjs from "emailjs-com";
+import { init } from "emailjs-com";
+init("user_LqMtDg5AaLF8MBBzUXPtA");
 
 import Icons from "./icons.js";
 export default {
   name: "App",
   components: {
     Skills: Skills,
-    UglySVGs: UglySVGs
+    UglySVGs: UglySVGs,
   },
   data: () => ({
     show: false,
+    footerShow: false,
     scrolled: false,
     windowHeight: 0,
-    styleobj: {
-      fontSize: "30px",
-      color: "red",
-    },
-    icons: null,
+    icons: Icons.getIcons(),
+    name: "",
+    email: "",
+    message: "",
+    footerIcons: [
+      {
+        value: "mdi-facebook",
+        link: "https://www.facebook.com/steven.lassinger",
+      },
+      {
+        value: "mdi-linkedin",
+        link:
+          "https://www.linkedin.com/public-profile/in/steven-lassinger-b81339157?challengeId=AQEIhWYjpnCbIAAAAXdWrjwEyZT27iYWOiYHGB0ICJqlrM4GidKbFVBgwZE-Jy7juQSXk1nVZL2S0JWjwg3-PPD8PZZ2-UMFDg&submissionId=4817940b-6436-5f16-4ea5-3bc4d589850c",
+      },
+      {
+        value: "mdi-github",
+        link: "https://github.com/stevenlassinger",
+      },
+    ],
   }),
 
   mounted() {
@@ -242,11 +313,17 @@ export default {
   methods: {
     onScroll() {
       this.windowHeight = window.scrollY;
-
+      if (window.scrollY == 0) {
+        this.footerShow = false;
+      }
       setTimeout(() => {
         // Any code to be executed when the window is scrolled
+        if (window.scrollY > 100) {
+          this.footerShow = true;
+        }
         if (!this.scrolled && window.scrollY > 500) {
           this.show = !this.show;
+          this.footerShow = true;
           this.scrolled = true;
         }
       }, 200);
@@ -255,8 +332,35 @@ export default {
     explore() {
       if (!this.show) {
         this.show = !this.show;
+        this.footerShow = true;
         this.scrolled = true;
       }
+    },
+    sendEmail(e) {
+      emailjs
+        .sendForm(
+          "service_pxhvriq",
+          "template_5i9syxv",
+          e.target,
+          "user_LqMtDg5AaLF8MBBzUXPtA",
+          {
+            name: this.name,
+            email: this.email,
+            message: this.message,
+          }
+        )
+        .then(
+          (result) => {
+            console.log("SUCCESS!", result.status, result.text);
+          },
+          (error) => {
+            console.log("FAILED...", error);
+          }
+        );
+      // Reset form field
+      this.name = "";
+      this.email = "";
+      this.message = "";
     },
   },
 };
@@ -294,30 +398,67 @@ export default {
 .intro-section {
   height: 100vh;
   background: #fff;
+  padding-top: 3em;
 }
+
 .skills-section {
   height: 100vh;
-  background: #f5f5f5;
+  background: #cacbd0;
+  padding-top: 3em;
+}
+
+.contact-section {
+  height: 100vh;
+  background: #18202b;
+  padding-top: 3em;
+}
+
+.contact-header {
+  color: var(--primaryTextColor);
 }
 
 .skills-card-header {
   background: var(--primaryColor);
   color: var(--primaryTextColor);
 }
+
 .is-body,
 .skills-body {
-  margin-top: 5em;
+  margin-top: 2em;
+}
+
+.contact-body {
+  margin-top: 1em;
 }
 
 .info-value {
   color: var(--primaryTextColor) !important;
 }
-.icon{
+.icon {
   height: 2em;
-
 }
- 
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.custom-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-col {
+  background-color: var(--primaryColor);
+}
+
+.footer-links {
+  color: var(--primaryTextColor) !important;
+}
 /* FROM LEFT ------> */
 .slide-from-left-leave-active,
 .slide-from-left-enter-active {
@@ -352,5 +493,49 @@ export default {
 }
 .slide-from-top-leave-to {
   transform: translateY(100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container1 {
+  display: block;
+  margin: auto;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 50%;
+}
+
+label {
+  float: left;
+}
+
+input[type="text"],
+[type="email"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: var(--primaryColor);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #454ea0;
 }
 </style>
