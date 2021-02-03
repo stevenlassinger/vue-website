@@ -1,6 +1,5 @@
 html {
-    /* overflow: hidden; */
-    
+    /* overflow: hidden; */ 
 }
 
 ::-webkit-scrollbar {
@@ -11,3 +10,11 @@ html {
   --primaryColor: #566bc7;
   --primaryTextColor: #fff;
 }
+
+.mdi-filled {
+  color: rgb(24, 32, 43)!important;
+}
+ *:focus
+ {
+ outline:none!important;
+ }

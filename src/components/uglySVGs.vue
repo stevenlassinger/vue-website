@@ -243,19 +243,17 @@ export default {
   }),
 
   mounted() {
-    console.log("ugly svg value:%o", this.value);
-
     this.icon_data = this.value;
-    console.log("ugly svg icon:%o", this.icon_data);
   },
+
   props: {
     value: {
       type: String,
       required: true,
     },
   },
-
   methods: {},
+  
 };
 </script>
 
